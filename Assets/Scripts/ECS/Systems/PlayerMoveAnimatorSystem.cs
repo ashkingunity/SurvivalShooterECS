@@ -1,5 +1,4 @@
 ﻿using Ashking.Components;
-using AshKing.OOP;
 using Unity.Entities;
 using Unity.Transforms;
 
