@@ -20,7 +20,7 @@ namespace Ashking.Systems
         
         protected override void OnUpdate()
         {
-            foreach (var (transform,velocity, moveSpeed, rotationSpeed, moveDirection, lookDirection) in
+            foreach (var (transform, velocity, moveSpeed, rotationSpeed, moveDirection, lookDirection) in
                      SystemAPI.Query<RefRW<LocalTransform>, RefRW<PhysicsVelocity>, PlayerMoveSpeed, PlayerRotationSpeed, MoveDirection, LookDirection>().WithAll<PlayerTag>())
             {
                 if (PerformRaycast(out RaycastHit raycastHit, lookDirection.Value))

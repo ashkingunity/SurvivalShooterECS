@@ -8,7 +8,7 @@ namespace Ashking.Authoring
     {
         [SerializeField] float moveSpeed = 2;
         [SerializeField] float lookSpeed = 2;
-        
+
         private class PlayerAuthoringBaker : Baker<PlayerAuthoring>
         {
             public override void Bake(PlayerAuthoring authoring)
@@ -24,10 +24,15 @@ namespace Ashking.Authoring
                 });
                 AddComponent<PlayerTag>(entity);
                 AddComponent<InitializePlayerFlag>(entity);
+                
                 AddComponent<MoveDirection>(entity);
                 AddComponent<LookDirection>(entity);
+                
                 AddComponent<InitializeCameraTargetTag>(entity);
                 AddComponent<CameraTarget>(entity);
+                
+                AddComponent<InitializePlayerAnimatorTag>(entity);
+                AddComponent<PlayerAnimatorTarget>(entity);
             }
         }
     }
