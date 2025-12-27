@@ -3,18 +3,17 @@ using Unity.Burst;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
-using UnityEngine;
 
 namespace Ashking.Systems
 {
     public partial struct PlayerMovementSystem : ISystem
     {
-        [BurstCompile]
         public void OnUpdate(ref SystemState state)
         {
             var deltaTime = SystemAPI.Time.DeltaTime;
             
-            foreach (var (transform, moveSpeed, moveDirection, rotationSpeed, lookDirection) in SystemAPI.Query<RefRW<LocalTransform>, PlayerMoveSpeed, MoveDirection, PlayerRotationSpeed, LookDirection>())
+            foreach (var (transform, moveSpeed, moveDirection, rotationSpeed, lookDirection) in
+                     SystemAPI.Query<RefRW<LocalTransform>, PlayerMoveSpeed, MoveDirection, PlayerRotationSpeed, LookDirection>().WithAll<PlayerTag>())
             {
                 var yaw = lookDirection.Value.x * rotationSpeed.Value * deltaTime;// Rotate around the Y-axis (for looking left/right)
                 quaternion yawRotation = quaternion.AxisAngle(math.up(), yaw);// Calculate the rotation quaternion

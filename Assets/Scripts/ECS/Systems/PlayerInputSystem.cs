@@ -19,7 +19,7 @@ namespace Ashking.Systems
         {
             var moveInput = gameIAS.Player.Move.ReadValue<Vector2>();
             var lookInput =  gameIAS.Player.Look.ReadValue<Vector2>();
-            foreach (var (moveDirection, lookDirection) in SystemAPI.Query<RefRW<MoveDirection>, RefRW<LookDirection>>())
+            foreach (var (moveDirection, lookDirection) in SystemAPI.Query<RefRW<MoveDirection>, RefRW<LookDirection>>().WithAll<PlayerTag>())
             {
                 moveDirection.ValueRW.Value = moveInput;
                 lookDirection.ValueRW.Value = lookInput;
