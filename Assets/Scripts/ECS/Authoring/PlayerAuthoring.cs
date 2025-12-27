@@ -23,6 +23,7 @@ namespace Ashking.Authoring
                     Value = authoring.lookSpeed
                 });
                 AddComponent<PlayerTag>(entity);
+                AddComponent<InitializePlayerFlag>(entity);
                 AddComponent<MoveDirection>(entity);
                 AddComponent<LookDirection>(entity);
                 AddComponent<InitializeCameraTargetTag>(entity);
