@@ -18,10 +18,12 @@ namespace Ashking.Systems
         {
             var moveInput = gameIAS.Player.Move.ReadValue<Vector2>();
             var lookInput =  gameIAS.Player.Look.ReadValue<Vector2>();
-            foreach (var (moveDirection, lookDirection) in SystemAPI.Query<RefRW<MoveDirection>, RefRW<LookDirection>>().WithAll<PlayerTag>())
+            var shootInput = gameIAS.Player.Shoot.ReadValue<float>() > 0;
+            foreach (var (moveDirection, lookDirection, canShoot) in SystemAPI.Query<RefRW<MoveDirection>, RefRW<LookDirection>, RefRW<CanShoot>>().WithAll<PlayerTag>())
             {
                 moveDirection.ValueRW.Value = moveInput;
                 lookDirection.ValueRW.Value = lookInput;
+                canShoot.ValueRW.Value = shootInput;
             }
         }
     }

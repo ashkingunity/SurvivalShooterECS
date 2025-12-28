@@ -435,6 +435,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 3.5
   lookSpeed: 2
+  damagePerShot: 20
+  timeBetweenShots: 0.15
+  shootingRange: 100
+  shootableLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
