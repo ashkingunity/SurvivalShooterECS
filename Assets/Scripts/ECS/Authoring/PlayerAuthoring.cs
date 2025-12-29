@@ -50,6 +50,7 @@ namespace Ashking.Authoring
                 });
                 AddComponent<InitializePlayerShootingTag>(entity);
                 AddComponent<PlayerShootingEffectsData>(entity);
+                AddComponent<PlayerShootingTimer>(entity);
             }
         }
     }

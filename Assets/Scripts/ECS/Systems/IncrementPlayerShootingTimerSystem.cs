@@ -1,0 +1,26 @@
+﻿using Ashking.Components;
+using AshKing.Groups;
+using Unity.Burst;
+using Unity.Entities;
+
+namespace Ashking.Systems
+{
+    [UpdateInGroup(typeof(PlayerShootingGroup), OrderFirst =  true)]
+    public partial struct IncrementPlayerShootingTimerSystem : ISystem
+    {
+        public void OnCreate(ref SystemState state)
+        {
+            state.RequireForUpdate<PlayerTag>();
+        }
+
+        public void OnUpdate(ref SystemState state)
+        {
+            var playerEntity = SystemAPI.GetSingletonEntity<PlayerTag>();
+            if (SystemAPI.HasComponent<PlayerShootingTimer>(playerEntity))
+            {
+                var timerOverride = SystemAPI.GetComponentRW<PlayerShootingTimer>(playerEntity);
+                timerOverride.ValueRW.Value += SystemAPI.Time.DeltaTime;
+            }
+        }
+    }
+}
