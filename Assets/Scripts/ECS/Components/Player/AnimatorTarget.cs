@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Ashking.Components
 {
-    public struct PlayerAnimatorTarget : IComponentData
+    public struct AnimatorTarget : IComponentData
     {
         public UnityObjectRef<Animator> Animator;
     }

@@ -2,7 +2,7 @@
 
 namespace Ashking.Components
 {
-    public struct PlayerRotationSpeed : IComponentData
+    public struct MoveSpeed : IComponentData
     {
         public float Value;
     }

@@ -9,7 +9,8 @@ namespace Ashking.Systems
     {
         public void OnUpdate(ref SystemState state)
         {
-            foreach (var (transform, cameraTarget) in SystemAPI.Query<LocalToWorld, CameraTarget>().WithAll<PlayerTag>().WithNone<InitializeCameraTargetTag>())
+            foreach (var (transform, cameraTarget) in 
+                     SystemAPI.Query<LocalToWorld, CameraTarget>().WithNone<InitializeCameraTargetTag>().WithAll<PlayerTag>())
             {
                 cameraTarget.CameraTargetTransform.Value.position = transform.Position;
             }

@@ -1,6 +1,5 @@
 ﻿using Ashking.Components;
 using AshKing.Groups;
-using AshKing.OOP;
 using Unity.Entities;
 
 namespace Ashking.Systems
@@ -10,11 +9,10 @@ namespace Ashking.Systems
     {
         public void OnUpdate(ref SystemState state)
         {
-            foreach (var (playerShootingEffectsData, playerShootingTimer, playerShootingData)
-                     in SystemAPI.Query<RefRW<PlayerShootingEffectsData>, PlayerShootingTimer, PlayerShootingData>().WithNone<InitializePlayerShootingTag>())
+            foreach (var (playerShootingEffectsData, shootingTimer, playerShootingData)
+                     in SystemAPI.Query<RefRW<PlayerShootingEffectsData>, ShootingTimer, PlayerShootingData>().WithNone<InitializePlayerShootingTag>().WithAll<PlayerTag>())
             {
-                if (playerShootingTimer.Value >= playerShootingEffectsData.ValueRO.EffectsDisplayTime *
-                    playerShootingData.TimeBetweenShots)
+                if (shootingTimer.Value >= playerShootingEffectsData.ValueRO.EffectsDisplayTime * playerShootingData.TimeBetweenShots)
                 {
                     // Disable the line renderer and the light.
                     playerShootingEffectsData.ValueRW.GunLine.Value.enabled = false;

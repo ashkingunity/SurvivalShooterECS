@@ -18,7 +18,7 @@ namespace Ashking.Systems
                 return;
 
             var ecb = new EntityCommandBuffer(state.WorldUpdateAllocator);
-            foreach (var (playerAnimatorTarget, entity) in SystemAPI.Query<RefRW<PlayerAnimatorTarget>>()
+            foreach (var (playerAnimatorTarget, entity) in SystemAPI.Query<RefRW<AnimatorTarget>>()
                          .WithAll<InitializePlayerAnimatorTag, PlayerTag>().WithEntityAccess())
             {
                 playerAnimatorTarget.ValueRW.Animator = PlayerGameObject.Instance.animator;

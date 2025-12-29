@@ -15,16 +15,16 @@ namespace Ashking.Systems
         
         protected override void OnUpdate()
         {
-            foreach (var (playerShootingEffectsData, playerShootingTimer, playerShootingData, canShoot) 
-                     in SystemAPI.Query<RefRW<PlayerShootingEffectsData>, RefRW<PlayerShootingTimer>, PlayerShootingData, CanShoot>())
+            foreach (var (playerShootingEffectsData, shootingTimer, playerShootingData, canShoot) 
+                     in SystemAPI.Query<RefRW<PlayerShootingEffectsData>, RefRW<ShootingTimer>, PlayerShootingData, CanShoot>().WithAll<PlayerTag>())
             {
-                if (!canShoot.Value || playerShootingTimer.ValueRO.Value < playerShootingData.TimeBetweenShots)
+                if (!canShoot.Value || shootingTimer.ValueRO.Value < playerShootingData.TimeBetweenShots)
                 {
                     return;
                 }
                 
                 // Reset the timer.
-                playerShootingTimer.ValueRW.Value = 0f;
+                shootingTimer.ValueRW.Value = 0f;
                 
                 // Enable the lights.
                 playerShootingEffectsData.ValueRW.GunLight.Value.enabled = true;

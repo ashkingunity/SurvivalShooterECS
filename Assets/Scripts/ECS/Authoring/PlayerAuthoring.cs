@@ -20,11 +20,11 @@ namespace Ashking.Authoring
             public override void Bake(PlayerAuthoring authoring)
             {
                 var entity = GetEntity(TransformUsageFlags.Dynamic);
-                AddComponent(entity, new PlayerMoveSpeed
+                AddComponent(entity, new MoveSpeed
                 {
                     Value = authoring.moveSpeed
                 });
-                AddComponent(entity, new PlayerRotationSpeed
+                AddComponent(entity, new RotationSpeed
                 {
                     Value = authoring.lookSpeed
                 });
@@ -39,7 +39,7 @@ namespace Ashking.Authoring
                 AddComponent<CameraTarget>(entity);
                 
                 AddComponent<InitializePlayerAnimatorTag>(entity);
-                AddComponent<PlayerAnimatorTarget>(entity);
+                AddComponent<AnimatorTarget>(entity);
                 
                 AddComponent(entity, new PlayerShootingData
                 {
@@ -50,7 +50,7 @@ namespace Ashking.Authoring
                 });
                 AddComponent<InitializePlayerShootingTag>(entity);
                 AddComponent<PlayerShootingEffectsData>(entity);
-                AddComponent<PlayerShootingTimer>(entity);
+                AddComponent<ShootingTimer>(entity);
             }
         }
     }

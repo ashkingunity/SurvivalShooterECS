@@ -10,7 +10,7 @@ namespace Ashking.Systems
         public void OnUpdate(ref SystemState state)
         {
             foreach (var (transform, animatorTarget, moveDirection) in
-                     SystemAPI.Query<RefRW<LocalTransform>, RefRW<PlayerAnimatorTarget>, MoveDirection>().WithNone<InitializePlayerAnimatorTag>().WithAll<PlayerTag>())
+                     SystemAPI.Query<RefRW<LocalTransform>, RefRW<AnimatorTarget>, MoveDirection>().WithNone<InitializePlayerAnimatorTag>().WithAll<PlayerTag>())
             {
                 // Rotate animator gameObject
                 animatorTarget.ValueRW.Animator.Value.transform.rotation = transform.ValueRO.Rotation;

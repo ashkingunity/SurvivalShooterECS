@@ -16,9 +16,9 @@ namespace Ashking.Systems
         public void OnUpdate(ref SystemState state)
         {
             var playerEntity = SystemAPI.GetSingletonEntity<PlayerTag>();
-            if (SystemAPI.HasComponent<PlayerShootingTimer>(playerEntity))
+            if (SystemAPI.HasComponent<ShootingTimer>(playerEntity))
             {
-                var timerOverride = SystemAPI.GetComponentRW<PlayerShootingTimer>(playerEntity);
+                var timerOverride = SystemAPI.GetComponentRW<ShootingTimer>(playerEntity);
                 timerOverride.ValueRW.Value += SystemAPI.Time.DeltaTime;
             }
         }

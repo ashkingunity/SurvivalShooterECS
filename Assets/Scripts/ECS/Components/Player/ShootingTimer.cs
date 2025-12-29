@@ -2,7 +2,7 @@
 
 namespace Ashking.Components
 {
-    public struct PlayerShootingTimer : IComponentData
+    public struct ShootingTimer : IComponentData
     {
         public float Value;
     }
