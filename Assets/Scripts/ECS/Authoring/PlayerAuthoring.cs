@@ -20,6 +20,8 @@ namespace Ashking.Authoring
             public override void Bake(PlayerAuthoring authoring)
             {
                 var entity = GetEntity(TransformUsageFlags.Dynamic);
+                AddComponent<PlayerTag>(entity);
+                AddComponent<InitializeCharacterFlag>(entity);
                 AddComponent(entity, new MoveSpeed
                 {
                     Value = authoring.moveSpeed
@@ -28,8 +30,6 @@ namespace Ashking.Authoring
                 {
                     Value = authoring.lookSpeed
                 });
-                AddComponent<PlayerTag>(entity);
-                AddComponent<InitializePlayerFlag>(entity);
                 
                 AddComponent<MoveDirection>(entity);
                 AddComponent<LookDirection>(entity);
