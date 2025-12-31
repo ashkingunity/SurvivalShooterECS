@@ -1,5 +1,6 @@
 ﻿using Ashking.Components;
-using AshKing.Groups;
+using Ashking.Groups;
+using Ashking.OOP;
 using Unity.Entities;
 using Unity.Physics;
 using UnityEngine;
@@ -47,7 +48,7 @@ namespace Ashking.Systems
                     End = _shootRay.Displacement,
                     Filter = new CollisionFilter
                     {
-                        BelongsTo = (uint)LayerMask.GetMask("Player"),
+                        BelongsTo = 1 << (int) CustomCollisionLayerNameEnum.Player,
                         CollidesWith =  (uint) playerShootingData.ShootableMask
                     }
                 };
@@ -57,6 +58,13 @@ namespace Ashking.Systems
                 {
                     // Set the second position of the line renderer to the point the raycast hit.
                     playerShootingEffectsData.ValueRW.GunLine.Value.SetPosition(1, raycastHit.Position);
+
+                    var hitEntity = raycastHit.Entity;
+                    if (SystemAPI.HasComponent<CurrentHealth>(hitEntity))
+                    {
+                        var currentHealth = SystemAPI.GetComponentRW<CurrentHealth>(hitEntity);
+                        currentHealth.ValueRW.Value -=  playerShootingData.DamagePerShot;
+                    }
                 }
                 else
                 {

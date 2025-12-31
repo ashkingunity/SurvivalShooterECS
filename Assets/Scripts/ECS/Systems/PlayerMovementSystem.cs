@@ -47,7 +47,7 @@ namespace Ashking.Systems
                 End =  ray.GetPoint(100f),
                 Filter = new CollisionFilter
                 {
-                    BelongsTo = (uint)LayerMask.GetMask("Default"),
+                    BelongsTo = 1 << (int)CustomCollisionLayerNameEnum.Player ,
                     CollidesWith =  1 << (int)CustomCollisionLayerNameEnum.Floor
                 }
             };

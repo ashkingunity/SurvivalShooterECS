@@ -18,11 +18,15 @@ namespace Ashking.Systems
             var playerEntity = SystemAPI.GetSingletonEntity<PlayerTag>();
             var playerPosition = SystemAPI.GetComponent<LocalTransform>(playerEntity).Position;
             
-            foreach (var enemyTarget in SystemAPI.Query<RefRW<EnemyTarget>>().WithNone<InitializeEnemyTargetTag>().WithAll<EnemyTag>())
+            foreach (var (enemyTarget, localTransform) in SystemAPI.Query<RefRW<EnemyTarget>, RefRW<LocalTransform>>().WithNone<InitializeEnemyTargetTag>().WithAll<EnemyTag>())
             {
+                // Move unity's navmesh agent
                 var navAgent = enemyTarget.ValueRO.Enemy.Value.navMeshAgent;
                 navAgent.isStopped = false; 
                 navAgent.destination =  playerPosition;
+                
+                // Move enemy entity
+                localTransform.ValueRW.Position = navAgent.transform.position;
                 
                 // Update walking and idle animation
                 enemyTarget.ValueRW.Enemy.Value.animator.SetBool("isWalking", navAgent.velocity.sqrMagnitude > 0.01f);

@@ -3,6 +3,7 @@
     public enum CustomCollisionLayerNameEnum
     {
         Floor = 6,
-        Shootable
+        Shootable,
+        Player
     }
 }

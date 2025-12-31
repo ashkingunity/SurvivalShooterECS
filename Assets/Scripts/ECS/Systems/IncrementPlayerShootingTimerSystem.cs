@@ -1,5 +1,5 @@
 ﻿using Ashking.Components;
-using AshKing.Groups;
+using Ashking.Groups;
 using Unity.Burst;
 using Unity.Entities;
 

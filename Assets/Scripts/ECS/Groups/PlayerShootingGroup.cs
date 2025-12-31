@@ -1,6 +1,6 @@
 ﻿using Unity.Entities;
 
-namespace AshKing.Groups
+namespace Ashking.Groups
 {
     // Place the custom group (PlayerShootingGroup) within the default SimulationSystemGroup
     [UpdateInGroup(typeof(SimulationSystemGroup))]
