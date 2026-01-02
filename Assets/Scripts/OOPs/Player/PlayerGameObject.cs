@@ -15,5 +15,8 @@ namespace AshKing.OOP
         public Light gunLight;                          // Reference to the light component
         public Light faceLight;							// Duh
         public float effectsDisplayTime = 0.2f;         // The proportion of the timeBetweenBullets that the effects will display for
+        
+        [Space]
+        public AudioSource hurtAudioSource;
     }
 }

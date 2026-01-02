@@ -1,7 +1,6 @@
 ﻿using Ashking.Components;
 using Ashking.OOP;
 using Unity.Entities;
-using UnityEngine;
 
 namespace Ashking.Systems
 {
@@ -10,7 +9,7 @@ namespace Ashking.Systems
     {
         public void OnCreate(ref SystemState state)
         {
-            state.RequireForUpdate<InitializeEnemyTargetTag>();
+            state.RequireForUpdate<InitializeEnemyGameObjectDataTag>();
         }
 
         public void OnUpdate(ref SystemState state)
@@ -19,11 +18,16 @@ namespace Ashking.Systems
                 return;
 
             var ecb = new EntityCommandBuffer(state.WorldUpdateAllocator);
-            foreach (var (enemyTarget, entity) in SystemAPI.Query<RefRW<EnemyTarget>>()
-                         .WithAll<InitializeEnemyTargetTag, EnemyTag>().WithEntityAccess())
+            foreach (var (enemyGameObjectData, entity) in SystemAPI.Query<RefRW<EnemyGameObjectData>>()
+                         .WithAll<InitializeEnemyGameObjectDataTag, EnemyTag>().WithEntityAccess())
             {
-                enemyTarget.ValueRW.Enemy = EnemyProvider.Instance.GetEnemy();
-                ecb.RemoveComponent<InitializeEnemyTargetTag>(entity);
+                var enemyGameObject = EnemyProvider.Instance.GetEnemy();
+                enemyGameObjectData.ValueRW.NavMeshAgent = enemyGameObject.navMeshAgent;
+                enemyGameObjectData.ValueRW.Animator = enemyGameObject.animator;
+                enemyGameObjectData.ValueRW.AudioSource = enemyGameObject.audioSource;
+                enemyGameObjectData.ValueRW.HitParticles = enemyGameObject.hitParticles;
+                
+                ecb.RemoveComponent<InitializeEnemyGameObjectDataTag>(entity);
             }
         
             ecb.Playback(state.EntityManager);

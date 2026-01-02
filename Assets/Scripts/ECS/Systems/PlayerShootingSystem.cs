@@ -3,7 +3,6 @@ using Ashking.Groups;
 using Ashking.OOP;
 using Unity.Entities;
 using Unity.Physics;
-using UnityEngine;
 using Ray = Unity.Physics.Ray;
 using RaycastHit = Unity.Physics.RaycastHit;
 
@@ -50,7 +49,8 @@ namespace Ashking.Systems
                     {
                         BelongsTo = 1 << (int) CustomCollisionLayerNameEnum.Player,
                         CollidesWith =  (uint) playerShootingData.ShootableMask
-                    }
+                    },
+                    
                 };
                 
                 PhysicsWorldSingleton physicsWorld = SystemAPI.GetSingleton<PhysicsWorldSingleton>();
@@ -64,6 +64,14 @@ namespace Ashking.Systems
                     {
                         var currentHealth = SystemAPI.GetComponentRW<CurrentHealth>(hitEntity);
                         currentHealth.ValueRW.Value -=  playerShootingData.DamagePerShot;
+                    }
+
+                    if (SystemAPI.HasComponent<EnemyGameObjectData>(hitEntity))
+                    {
+                        var enemyGameObjectData = SystemAPI.GetComponentRW<EnemyGameObjectData>(hitEntity);
+                        enemyGameObjectData.ValueRW.AudioSource.Value.Play();
+                        enemyGameObjectData.ValueRW.HitParticles.Value.transform.position = raycastHit.Position;
+                        enemyGameObjectData.ValueRW.HitParticles.Value.Play();
                     }
                 }
                 else

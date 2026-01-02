@@ -1,7 +1,7 @@
 ﻿using Ashking.Components;
+using Unity.Burst;
 using Unity.Entities;
 using Unity.Transforms;
-using UnityEngine;
 
 namespace Ashking.Systems
 {
@@ -12,24 +12,23 @@ namespace Ashking.Systems
         {
             state.RequireForUpdate<PlayerTag>();
         }
-
+        
         public void OnUpdate(ref SystemState state)
         {
             var playerEntity = SystemAPI.GetSingletonEntity<PlayerTag>();
             var playerPosition = SystemAPI.GetComponent<LocalTransform>(playerEntity).Position;
             
-            foreach (var (enemyTarget, localTransform) in SystemAPI.Query<RefRW<EnemyTarget>, RefRW<LocalTransform>>().WithNone<InitializeEnemyTargetTag>().WithAll<EnemyTag>())
+            foreach (var (enemyGameObjectData, localTransform) in SystemAPI.Query<RefRW<EnemyGameObjectData>, RefRW<LocalTransform>>().WithNone<InitializeEnemyGameObjectDataTag>().WithAll<EnemyTag>())
             {
                 // Move unity's navmesh agent
-                var navAgent = enemyTarget.ValueRO.Enemy.Value.navMeshAgent;
-                navAgent.isStopped = false; 
-                navAgent.destination =  playerPosition;
+                enemyGameObjectData.ValueRO.NavMeshAgent.Value.isStopped = false; 
+                enemyGameObjectData.ValueRO.NavMeshAgent.Value.destination =  playerPosition;
                 
                 // Move enemy entity
-                localTransform.ValueRW.Position = navAgent.transform.position;
+                localTransform.ValueRW.Position = enemyGameObjectData.ValueRO.NavMeshAgent.Value.transform.position;
                 
                 // Update walking and idle animation
-                enemyTarget.ValueRW.Enemy.Value.animator.SetBool("isWalking", navAgent.velocity.sqrMagnitude > 0.01f);
+                enemyGameObjectData.ValueRW.Animator.Value.SetBool("isWalking", enemyGameObjectData.ValueRO.NavMeshAgent.Value.velocity.sqrMagnitude > 0.01f);
             }
         }
     }

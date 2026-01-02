@@ -15,6 +15,9 @@ namespace Ashking.Authoring
         [SerializeField] float shootingRange = 100f; // The distance the gun can fire
         [SerializeField] LayerMask shootableLayer; // A layer mask so the raycast only hits things on the shootable layer.
 
+        [Space]
+        [SerializeField] float maxHealth = 100f;
+        
         private class PlayerAuthoringBaker : Baker<PlayerAuthoring>
         {
             public override void Bake(PlayerAuthoring authoring)
@@ -51,6 +54,12 @@ namespace Ashking.Authoring
                 AddComponent<InitializePlayerShootingTag>(entity);
                 AddComponent<PlayerShootingEffectsData>(entity);
                 AddComponent<ShootingTimer>(entity);
+                
+                AddComponent(entity, new CurrentHealth
+                {
+                    Value = authoring.maxHealth
+                });
+                AddBuffer<DamageThisFrame>(entity);
             }
         }
     }

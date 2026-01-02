@@ -3,9 +3,11 @@ using UnityEngine.AI;
 
 namespace Ashking.OOP
 {
-    public class Enemy : MonoBehaviour
+    public class EnemyGameObject : MonoBehaviour
     {
         public NavMeshAgent navMeshAgent;
         public Animator animator;
+        public AudioSource audioSource;
+        public ParticleSystem hitParticles;
     }
 }

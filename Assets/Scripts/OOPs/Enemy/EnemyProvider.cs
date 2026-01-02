@@ -6,16 +6,16 @@ namespace Ashking.OOP
 {
     public class EnemyProvider : Singleton<EnemyProvider>
     {
-        public List<Enemy> enemies;
+        public List<EnemyGameObject> enemies;
 
-        Queue<Enemy> enemiesQueue;
+        Queue<EnemyGameObject> enemiesQueue;
 
         void Start()
         {
-            enemiesQueue = new Queue<Enemy>(enemies);
+            enemiesQueue = new Queue<EnemyGameObject>(enemies);
         }
 
-        public Enemy GetEnemy()
+        public EnemyGameObject GetEnemy()
         {
             return enemiesQueue.Dequeue();
         }

@@ -7,6 +7,8 @@ namespace Ashking.Authoring
     public class EnemyAuthoring : MonoBehaviour
     {
         [SerializeField] float maxHealth = 100f;
+        [SerializeField] float attackDamage = 5f;
+        [SerializeField] float coolDownTime = 0.5f;
             
         private class EnemyAuthoringBaker : Baker<EnemyAuthoring>
         {
@@ -16,13 +18,21 @@ namespace Ashking.Authoring
                 AddComponent<EnemyTag>(entity);
                 AddComponent<InitializeCharacterFlag>(entity);
                 
-                AddComponent<InitializeEnemyTargetTag>(entity);
-                AddComponent<EnemyTarget>(entity);
+                AddComponent<InitializeEnemyGameObjectDataTag>(entity);
+                AddComponent<EnemyGameObjectData>(entity);
                 
                 AddComponent(entity, new CurrentHealth
                 {
                     Value = authoring.maxHealth
                 });
+                
+                AddComponent(entity, new EnemyAttackData
+                {
+                    Damage = authoring.attackDamage,
+                    CooldownTime = authoring.coolDownTime
+                });
+                AddComponent<EnemyCooldownExpirationTimestamp>(entity);
+                SetComponentEnabled<EnemyCooldownExpirationTimestamp>(entity, false);
             }
         }
     }
