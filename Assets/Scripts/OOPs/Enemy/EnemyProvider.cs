@@ -6,18 +6,42 @@ namespace Ashking.OOP
 {
     public class EnemyProvider : Singleton<EnemyProvider>
     {
-        public List<EnemyGameObject> enemies;
+        [SerializeField] List<EnemyGameObject> enemyGameObjects;
+        Dictionary<string, IPoolable> poolsDictionary = new();
+        bool isInitializing = false;
 
-        Queue<EnemyGameObject> enemiesQueue;
-
-        void Start()
+        new void Awake()
         {
-            enemiesQueue = new Queue<EnemyGameObject>(enemies);
+            base.Awake();
+            
+            if(Instance != this)
+                return;
+
+            Initialize();
+        }
+        
+        public GameObject GetEnemy(EnemyName enemyName)
+        {
+            if (isInitializing == false)
+            {
+                Initialize();
+            }
+            
+            var poolable = poolsDictionary[enemyName.ToString()];
+            return poolable != null ? Pool.Instance.GetObjectFromPool(poolable, enemyName.ToString()) : null;
         }
 
-        public EnemyGameObject GetEnemy()
+        void Initialize()
         {
-            return enemiesQueue.Dequeue();
+            isInitializing = true;
+
+            foreach (var enemyGameObject in enemyGameObjects)
+            {
+                if (enemyGameObject.TryGetComponent(out IPoolable poolable))
+                {
+                    poolsDictionary[enemyGameObject.enemyName.ToString()] = poolable;
+                }
+            }
         }
     }
 }

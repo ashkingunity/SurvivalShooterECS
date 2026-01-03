@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 1105188208080126185}
   - component: {fileID: 327907139264904474}
   - component: {fileID: 8578818869413070351}
+  - component: {fileID: 5551668895248244124}
   m_Layer: 0
   m_Name: ZomBunnyGameObject
   m_TagString: Untagged
@@ -401,10 +402,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24315dd33075460b979f0f24a8905bd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyName: 1
   navMeshAgent: {fileID: 1105188208080126185}
   animator: {fileID: 4016506742341372204}
   audioSource: {fileID: 327907139264904474}
   hitParticles: {fileID: 5852557301068484274}
+--- !u!114 &5551668895248244124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7748516482938944796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd04714b5a4be4b499cee20f1e75685b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolSize: 5
 --- !u!1001 &5852557301052887410
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 ﻿using Ashking.Components;
+using Ashking.OOP;
 using Unity.Entities;
 using UnityEngine;
 
@@ -6,6 +7,8 @@ namespace Ashking.Authoring
 {
     public class EnemyAuthoring : MonoBehaviour
     {
+        [SerializeField] EnemyName enemyName;
+        
         [SerializeField] float maxHealth = 100f;
         [SerializeField] float attackDamage = 5f;
         [SerializeField] float coolDownTime = 0.5f;
@@ -19,8 +22,11 @@ namespace Ashking.Authoring
                 AddComponent<InitializeCharacterFlag>(entity);
                 
                 AddComponent<InitializeEnemyGameObjectDataTag>(entity);
-                AddComponent<EnemyGameObjectData>(entity);
-                
+                AddComponent(entity, new EnemyGameObjectData
+                {
+                    EnemyName = authoring.enemyName
+                });
+
                 AddComponent(entity, new CurrentHealth
                 {
                     Value = authoring.maxHealth

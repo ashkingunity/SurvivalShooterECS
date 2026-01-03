@@ -6,7 +6,7 @@ namespace OOPs.Utlities
     {
         public static T Instance;
 
-        void Awake()
+        protected void Awake()
         {
             if (Instance != null)
             {

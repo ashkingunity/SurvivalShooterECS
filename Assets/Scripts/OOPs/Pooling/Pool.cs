@@ -5,12 +5,11 @@ namespace Ashking.OOP
 {
   public class Pool : MonoBehaviour
   {
-    [HideInInspector] public GameObject objectPrefab;
+    GameObject objectPrefab;
     Queue<GameObject> pooledObjects;
-    public static Dictionary<string, Pool> pools = new Dictionary<string, Pool>();
+    static Dictionary<string, Pool> poolsDictionary = new();
 
     [HideInInspector] public GameObject parentTransform;// Just to keep hierarchy clean
-    Pool pool;
 
     private static Pool instance;
     public static Pool Instance
@@ -31,21 +30,21 @@ namespace Ashking.OOP
       if (instance != null)
       {
         instance = null;
-        pools = new Dictionary<string, Pool>();// Clear old pools when gameplay scene is exited to prevent getting null gameobjects from pool when gameplay scene is reloaded
+        poolsDictionary = new Dictionary<string, Pool>();// Clear old pools when gameplay scene is exited to prevent getting null gameobjects from pool when gameplay scene is reloaded
       }
     }
 
-    public GameObject GetObjectFromPool(IPoolable poolable)
+    public GameObject GetObjectFromPool(IPoolable poolable, string poolName)
     {
-      if (pools.ContainsKey(poolable.ObjectToPool.name))
+      if (poolsDictionary.ContainsKey(poolName))
       {
-        Pool pool = pools[poolable.ObjectToPool.name];
+        Pool pool = poolsDictionary[poolName];
         return pool.GetGameObject();
       }
       else
       {
-        CreatePool(poolable);
-        Pool pool = pools[poolable.ObjectToPool.name];
+        CreatePool(poolable, poolName);
+        Pool pool = poolsDictionary[poolName];
         return pool.GetGameObject();
       }
     }
@@ -55,16 +54,16 @@ namespace Ashking.OOP
       gObj.SetActive(false);
       pooledObjects.Enqueue(gObj);
     }
-
-    void CreatePool(IPoolable poolable)
+    
+    void CreatePool(IPoolable poolable, string poolName)
     {
-      GameObject gObj = new GameObject(poolable.ObjectToPool.name);
+      GameObject gObj = new GameObject(poolName);
 
-      pool = gObj.AddComponent<Pool>();
+      Pool pool = gObj.AddComponent<Pool>();
       pool.parentTransform = gObj;
       pool.objectPrefab = poolable.ObjectToPool;
       pool.AddToPool(poolable);
-      pools.Add(poolable.ObjectToPool.name, pool);
+      poolsDictionary.Add(poolName, pool);
     }
 
     void AddToPool(IPoolable poolable)

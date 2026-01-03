@@ -68,10 +68,13 @@ namespace Ashking.Systems
 
                     if (SystemAPI.HasComponent<EnemyGameObjectData>(hitEntity))
                     {
-                        var enemyGameObjectData = SystemAPI.GetComponentRW<EnemyGameObjectData>(hitEntity);
-                        enemyGameObjectData.ValueRW.AudioSource.Value.Play();
-                        enemyGameObjectData.ValueRW.HitParticles.Value.transform.position = raycastHit.Position;
-                        enemyGameObjectData.ValueRW.HitParticles.Value.Play();
+                        var enemyGameObjectData = SystemAPI.GetComponentRW<EnemyGameObjectData>(hitEntity); ;
+                        if (SystemAPI.HasComponent<InitializeEnemyGameObjectDataTag>(hitEntity) == false)
+                        {
+                            enemyGameObjectData.ValueRW.AudioSource.Value.Play();
+                            enemyGameObjectData.ValueRW.HitParticles.Value.transform.position = raycastHit.Position;
+                            enemyGameObjectData.ValueRW.HitParticles.Value.Play();
+                        }
                     }
                 }
                 else

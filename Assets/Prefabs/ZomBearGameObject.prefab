@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 7506679963696608474}
   - component: {fileID: 8317657434456478201}
   - component: {fileID: 2894399997416735693}
+  - component: {fileID: -4630247022829559632}
   m_Layer: 0
   m_Name: ZomBearGameObject
   m_TagString: Untagged
@@ -315,6 +316,19 @@ MonoBehaviour:
   animator: {fileID: 3436043271151110491}
   audioSource: {fileID: 8317657434456478201}
   hitParticles: {fileID: 1359420750558119859}
+--- !u!114 &-4630247022829559632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5583253270221625255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd04714b5a4be4b499cee20f1e75685b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolSize: 5
 --- !u!1 &7065965706999790206
 GameObject:
   m_ObjectHideFlags: 0
