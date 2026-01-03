@@ -3,8 +3,10 @@ using UnityEngine;
 
 namespace Ashking.Components
 {
-    public struct PlayerShootingEffectsData : IComponentData
+    public struct PlayerGameObjectData : IComponentData
     {
+        public UnityObjectRef<Animator> Animator;
+        
         public UnityObjectRef<Transform> GunTipTransform;               // Reference to the gun's tip
         public UnityObjectRef<ParticleSystem> GunParticles;             // Reference to the particle system
         public UnityObjectRef<LineRenderer> GunLine;                    // Reference to the line renderer

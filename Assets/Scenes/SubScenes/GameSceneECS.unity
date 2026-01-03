@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 507087060}
   - component: {fileID: 507087059}
   m_Layer: 0
-  m_Name: EnemySpawner
+  m_Name: EnemySpawner_ZomBunny
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 512039259}
   - component: {fileID: 512039258}
   m_Layer: 0
-  m_Name: EnemySpawner
+  m_Name: EnemySpawner_Hellephant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -441,7 +441,7 @@ GameObject:
   - component: {fileID: 2116135075}
   - component: {fileID: 2116135074}
   m_Layer: 0
-  m_Name: EnemySpawner
+  m_Name: EnemySpawner_ZomBear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

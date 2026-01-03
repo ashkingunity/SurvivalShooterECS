@@ -30,6 +30,14 @@ namespace Ashking.OOP
             var poolable = poolsDictionary[enemyName.ToString()];
             return poolable != null ? Pool.Instance.GetObjectFromPool(poolable, enemyName.ToString()) : null;
         }
+        
+        public void ReturnEnemy(GameObject gObj, EnemyName enemyName)
+        {
+            if (poolsDictionary.ContainsKey(enemyName.ToString()))
+            {
+                Pool.Instance.AddBackToPool(gObj, enemyName.ToString());
+            }
+        }
 
         void Initialize()
         {

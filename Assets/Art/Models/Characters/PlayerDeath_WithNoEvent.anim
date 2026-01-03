@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: NewPlayerDeath
+  m_Name: PlayerDeath_WithNoEvent
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -413,8 +413,7 @@ AnimationClip:
         time: 2.166668
         value: {x: 0.48470333, y: 0.046017822, z: 0.0030541555, w: 0.87346196}
         inSlope: {x: 0.0000017881666, y: 0.00000022352083, z: -0.00000015716309, w: 0}
-        outSlope: {x: 0.0000017881666, y: 0.00000022352083, z: -0.00000015716309,
-          w: 0}
+        outSlope: {x: 0.0000017881666, y: 0.00000022352083, z: -0.00000015716309, w: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334, w: 0.33333334}

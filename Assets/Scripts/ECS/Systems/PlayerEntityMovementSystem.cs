@@ -9,7 +9,7 @@ using RaycastHit = Unity.Physics.RaycastHit;
 
 namespace Ashking.Systems
 {
-    public partial class PlayerMovementSystem : SystemBase
+    public partial class PlayerEntityMovementSystem : SystemBase
     {
         Camera _camera;
 

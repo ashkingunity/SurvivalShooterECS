@@ -17,6 +17,6 @@ namespace AshKing.OOP
         public float effectsDisplayTime = 0.2f;         // The proportion of the timeBetweenBullets that the effects will display for
         
         [Space]
-        public AudioSource hurtAudioSource;
+        public AudioSource playerAudioSource;
     }
 }

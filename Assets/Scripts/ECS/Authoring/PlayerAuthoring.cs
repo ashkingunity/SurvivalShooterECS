@@ -41,9 +41,6 @@ namespace Ashking.Authoring
                 AddComponent<InitializeCameraTargetTag>(entity);
                 AddComponent<CameraTarget>(entity);
                 
-                AddComponent<InitializePlayerAnimatorTag>(entity);
-                AddComponent<AnimatorTarget>(entity);
-                
                 AddComponent(entity, new PlayerShootingData
                 {
                     DamagePerShot = authoring.damagePerShot,
@@ -51,8 +48,8 @@ namespace Ashking.Authoring
                     ShootingRange = authoring.shootingRange,
                     ShootableMask = authoring.shootableLayer
                 });
-                AddComponent<InitializePlayerShootingTag>(entity);
-                AddComponent<PlayerShootingEffectsData>(entity);
+                AddComponent<InitializePlayerEntityTag>(entity);
+                AddComponent<PlayerGameObjectData>(entity);
                 AddComponent<ShootingTimer>(entity);
                 
                 AddComponent(entity, new CurrentHealth
@@ -60,6 +57,9 @@ namespace Ashking.Authoring
                     Value = authoring.maxHealth
                 });
                 AddBuffer<DamageThisFrame>(entity);
+                
+                AddComponent<DestroyEntityFlag>(entity);
+                SetComponentEnabled<DestroyEntityFlag>(entity, false);
             }
         }
     }

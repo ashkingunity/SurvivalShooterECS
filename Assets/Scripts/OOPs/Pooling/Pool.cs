@@ -55,6 +55,15 @@ namespace Ashking.OOP
       pooledObjects.Enqueue(gObj);
     }
     
+    public void AddBackToPool(GameObject gObj, string poolName)
+    {
+      if (poolsDictionary.ContainsKey(poolName))
+      {
+        Pool pool = poolsDictionary[poolName];
+        pool.AddBackToPool(gObj);
+      }
+    }
+    
     void CreatePool(IPoolable poolable, string poolName)
     {
       GameObject gObj = new GameObject(poolName);

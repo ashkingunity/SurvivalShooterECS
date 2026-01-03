@@ -1,5 +1,5 @@
 ﻿using Ashking.Components;
-using Unity.Burst;
+using Ashking.OOP;
 using Unity.Entities;
 using Unity.Transforms;
 
@@ -16,6 +16,9 @@ namespace Ashking.Systems
         public void OnUpdate(ref SystemState state)
         {
             var playerEntity = SystemAPI.GetSingletonEntity<PlayerTag>();
+            if(playerEntity == Entity.Null)
+                return;
+            
             var playerPosition = SystemAPI.GetComponent<LocalTransform>(playerEntity).Position;
             
             foreach (var (enemyGameObjectData, localTransform) 
@@ -29,7 +32,7 @@ namespace Ashking.Systems
                 localTransform.ValueRW.Position = enemyGameObjectData.ValueRO.NavMeshAgent.Value.transform.position;
                 
                 // Update walking and idle animation
-                enemyGameObjectData.ValueRW.Animator.Value.SetBool("isWalking", enemyGameObjectData.ValueRO.NavMeshAgent.Value.velocity.sqrMagnitude > 0.01f);
+                enemyGameObjectData.ValueRW.Animator.Value.SetBool(SurvivalShooterAnimationHashes.WalkingHash, enemyGameObjectData.ValueRO.NavMeshAgent.Value.velocity.sqrMagnitude > 0.01f);
             }
         }
     }

@@ -1028,7 +1028,7 @@ MonoBehaviour:
   gunLight: {fileID: 1488592861}
   faceLight: {fileID: 891975324}
   effectsDisplayTime: 0.2
-  hurtAudioSource: {fileID: 1338666323}
+  playerAudioSource: {fileID: 1338666323}
 --- !u!82 &1338666323
 AudioSource:
   m_ObjectHideFlags: 0

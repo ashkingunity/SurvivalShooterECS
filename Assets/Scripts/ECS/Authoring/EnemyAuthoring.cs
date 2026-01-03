@@ -39,6 +39,9 @@ namespace Ashking.Authoring
                 });
                 AddComponent<EnemyCooldownExpirationTimestamp>(entity);
                 SetComponentEnabled<EnemyCooldownExpirationTimestamp>(entity, false);
+                
+                AddComponent<DestroyEntityFlag>(entity);
+                SetComponentEnabled<DestroyEntityFlag>(entity, false);
             }
         }
     }

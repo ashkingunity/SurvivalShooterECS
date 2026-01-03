@@ -11,7 +11,8 @@ namespace Ashking.Systems
         public void OnUpdate(ref SystemState state)
         {
             foreach (var (currentHealth, damageThisFrame, entity) 
-                     in SystemAPI.Query<RefRW<CurrentHealth>, DynamicBuffer<DamageThisFrame>>().WithAll<PlayerTag>().WithEntityAccess())
+                     in SystemAPI.Query<RefRW<CurrentHealth>, DynamicBuffer<DamageThisFrame>>()
+                         .WithAll<PlayerTag>().WithPresent<DestroyEntityFlag>().WithEntityAccess())
             {
                 // skip if no damage/hits is taken this frame
                 if(damageThisFrame.IsEmpty)
@@ -23,18 +24,20 @@ namespace Ashking.Systems
                 {
                     currentHealth.ValueRW.Value -= damage.Value;
                 }
-
-                if (!Mathf.Approximately(previousHealth, currentHealth.ValueRO.Value))
-                {
-                    PlayerGameObject.Instance.hurtAudioSource.Play();
-                }
                 
                 // clear damageThisFrame buffer after process the damages/hits
                 damageThisFrame.Clear();
+                
+                // Play player hurt audio only if player damaged
+                if (!Mathf.Approximately(previousHealth, currentHealth.ValueRO.Value))
+                {
+                    PlayerGameObject.Instance.playerAudioSource.Play();
+                }
 
                 if (currentHealth.ValueRW.Value <= 0)
                 {
                     // Enable DestroyEntityFlag
+                    SystemAPI.SetComponentEnabled<DestroyEntityFlag>(entity, true);
                 }
             }
         }

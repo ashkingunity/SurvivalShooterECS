@@ -9,15 +9,15 @@ namespace Ashking.Systems
     {
         public void OnUpdate(ref SystemState state)
         {
-            foreach (var (playerShootingEffectsData, shootingTimer, playerShootingData)
-                     in SystemAPI.Query<RefRW<PlayerShootingEffectsData>, ShootingTimer, PlayerShootingData>().WithNone<InitializePlayerShootingTag>().WithAll<PlayerTag>())
+            foreach (var (playerGameObjectData, playerShootingData, shootingTimer)
+                     in SystemAPI.Query<RefRW<PlayerGameObjectData>, PlayerShootingData, ShootingTimer>().WithNone<InitializePlayerEntityTag>().WithAll<PlayerTag>())
             {
-                if (shootingTimer.Value >= playerShootingEffectsData.ValueRO.EffectsDisplayTime * playerShootingData.TimeBetweenShots)
+                if (shootingTimer.Value >= playerGameObjectData.ValueRO.EffectsDisplayTime * playerShootingData.TimeBetweenShots)
                 {
                     // Disable the line renderer and the light.
-                    playerShootingEffectsData.ValueRW.GunLine.Value.enabled = false;
-                    playerShootingEffectsData.ValueRW.FaceLight.Value.enabled = false;
-                    playerShootingEffectsData.ValueRW.GunLight.Value.enabled = false;
+                    playerGameObjectData.ValueRW.GunLine.Value.enabled = false;
+                    playerGameObjectData.ValueRW.FaceLight.Value.enabled = false;
+                    playerGameObjectData.ValueRW.GunLight.Value.enabled = false;
                 }
             }
         }
