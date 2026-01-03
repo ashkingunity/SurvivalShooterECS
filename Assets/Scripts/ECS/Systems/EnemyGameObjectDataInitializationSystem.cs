@@ -26,7 +26,9 @@ namespace Ashking.Systems
                 if (gameObject!= null && gameObject.TryGetComponent(out EnemyGameObject enemyGameObject))
                 {
                     gameObject.transform.position = SystemAPI.GetComponent<LocalTransform>(entity).Position;// Set spawn positon of enemy gameObject
-                        
+                    
+                    enemyGameObject.ConfigureEnemyGameObject();
+                                            
                     enemyGameObjectData.ValueRW.NavMeshAgent = enemyGameObject.navMeshAgent;
                     enemyGameObjectData.ValueRW.Animator = enemyGameObject.animator;
                     enemyGameObjectData.ValueRW.AudioSource = enemyGameObject.audioSource;

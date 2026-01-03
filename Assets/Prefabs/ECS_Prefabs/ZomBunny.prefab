@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8653128765214956550}
   - component: {fileID: 204419004172720268}
   - component: {fileID: 1829943999734595929}
+  - component: {fileID: 7754879892766303435}
   m_Layer: 7
   m_Name: ZomBunny
   m_TagString: Untagged
@@ -122,3 +123,16 @@ MonoBehaviour:
   maxHealth: 100
   attackDamage: 10
   coolDownTime: 0.5
+--- !u!114 &7754879892766303435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5847910349595705339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b16440c0197848ca855af99b20465fa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip: {fileID: 8300000, guid: 1d3bfb9269f136947bf8ac164cace1ff, type: 3}

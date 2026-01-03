@@ -225,6 +225,8 @@ GameObject:
   - component: {fileID: 327907139264904474}
   - component: {fileID: 8578818869413070351}
   - component: {fileID: 5551668895248244124}
+  - component: {fileID: 2973681707211546158}
+  - component: {fileID: 2284839142244920564}
   m_Layer: 0
   m_Name: ZomBunnyGameObject
   m_TagString: Untagged
@@ -420,6 +422,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolSize: 5
+--- !u!114 &2973681707211546158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7748516482938944796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3662937259e69f4da1fd2cd361c929c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2284839142244920564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7748516482938944796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a20e14527273584698f70476a7ca7f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sinkSpeed: 2.5
+  <OnSink>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2973681707211546158}
+        m_TargetAssemblyTypeName: Ashking.OOP.BackToPool, Assembly-CSharp
+        m_MethodName: ReturnToPool
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &5852557301052887410
 PrefabInstance:
   m_ObjectHideFlags: 0

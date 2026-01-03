@@ -9,9 +9,9 @@ AnimatorOverrideController:
   m_Name: HellephantAC_O
   m_Controller: {fileID: 9100000, guid: a1f177972d2c97a46959b5049c41410d, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400004, guid: f1d84cc28597f5641a3d9cbc4df7e306, type: 3}
-    m_OverrideClip: {fileID: 7400004, guid: b77f122f451a2394898a24191c26107c, type: 3}
   - m_OriginalClip: {fileID: 7400002, guid: f1d84cc28597f5641a3d9cbc4df7e306, type: 3}
     m_OverrideClip: {fileID: 7400002, guid: b77f122f451a2394898a24191c26107c, type: 3}
   - m_OriginalClip: {fileID: 7400000, guid: f1d84cc28597f5641a3d9cbc4df7e306, type: 3}
     m_OverrideClip: {fileID: 7400000, guid: b77f122f451a2394898a24191c26107c, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 6d84a41af85b048ff8e31ec77a4505f4, type: 2}
+    m_OverrideClip: {fileID: 7400004, guid: b77f122f451a2394898a24191c26107c, type: 3}

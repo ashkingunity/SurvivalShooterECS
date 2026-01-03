@@ -13,10 +13,7 @@ namespace Ashking.OOP
         
         public void ConfigureEnemyGameObject()
         {
-            // // Rebind to reset the internal state and parameters to defaults
-            // animator.Rebind();
-            // // Force an immediate update to ensure the state is applied instantly
-            // animator.Update(0f);
+            navMeshAgent.enabled = true;
         }
     }
 }

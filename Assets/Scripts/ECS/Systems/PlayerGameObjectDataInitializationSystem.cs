@@ -5,7 +5,7 @@ using Unity.Entities;
 namespace Ashking.Systems
 {
     [UpdateInGroup(typeof(InitializationSystemGroup))]
-    public partial struct PlayerEntityInitializationSystem : ISystem
+    public partial struct PlayerGameObjectDataInitializationSystem : ISystem
     {
         public void OnCreate(ref SystemState state)
         {
@@ -23,6 +23,9 @@ namespace Ashking.Systems
             {
                 // Initialize animator
                 playerGameObjectData.ValueRW.Animator = PlayerGameObject.Instance.animator;
+                
+                // Initialize player audio
+                playerGameObjectData.ValueRW.PlayerAudioSource = PlayerGameObject.Instance.playerAudioSource;
                 
                 // Initialize shooting effects
                 playerGameObjectData.ValueRW.GunTipTransform = PlayerGameObject.Instance.gunTipTransform;

@@ -5,7 +5,6 @@ namespace Ashking.OOP
   [RequireComponent(typeof(Poolable))]
   public class BackToPool : MonoBehaviour
   {
-    [SerializeField] float returnTime = 1.5f;
     IPoolable poolable;
     void Awake()
     {
@@ -14,10 +13,15 @@ namespace Ashking.OOP
 
     void OnEnable()
     {
-      CancelInvoke("ReturnBackToPool");
+      CancelInvoke(nameof(ReturnBackToPool));
+    }
+
+    public void ReturnToPool(float time)
+    {
+      CancelInvoke(nameof(ReturnBackToPool));
       if (poolable != null)
       {
-        Invoke("ReturnBackToPool", returnTime);
+        Invoke(nameof(ReturnBackToPool), time);
       }
     }
 

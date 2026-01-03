@@ -6,6 +6,7 @@ namespace Ashking.Components
     public struct PlayerGameObjectData : IComponentData
     {
         public UnityObjectRef<Animator> Animator;
+        public UnityObjectRef<AudioSource> PlayerAudioSource;
         
         public UnityObjectRef<Transform> GunTipTransform;               // Reference to the gun's tip
         public UnityObjectRef<ParticleSystem> GunParticles;             // Reference to the particle system

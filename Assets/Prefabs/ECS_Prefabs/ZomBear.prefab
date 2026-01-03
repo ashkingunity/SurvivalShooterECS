@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8564503532686261879}
   - component: {fileID: 8822278467210863444}
   - component: {fileID: 3210756736285688285}
+  - component: {fileID: 6157543435291431943}
   m_Layer: 7
   m_Name: ZomBear
   m_TagString: Untagged
@@ -122,3 +123,16 @@ MonoBehaviour:
   maxHealth: 100
   attackDamage: 10
   coolDownTime: 0.5
+--- !u!114 &6157543435291431943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8078997791795071484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b16440c0197848ca855af99b20465fa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip: {fileID: 8300000, guid: 62366b8d2c37a49dca550841c741317f, type: 3}

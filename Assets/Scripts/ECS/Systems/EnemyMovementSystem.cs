@@ -22,7 +22,8 @@ namespace Ashking.Systems
             var playerPosition = SystemAPI.GetComponent<LocalTransform>(playerEntity).Position;
             
             foreach (var (enemyGameObjectData, localTransform) 
-                     in SystemAPI.Query<RefRW<EnemyGameObjectData>, RefRW<LocalTransform>>().WithNone<InitializeEnemyGameObjectDataTag>().WithAll<EnemyTag>())
+                     in SystemAPI.Query<RefRW<EnemyGameObjectData>, RefRW<LocalTransform>>()
+                         .WithNone<InitializeEnemyGameObjectDataTag>().WithAll<EnemyTag>())
             {
                 // Move unity's navmesh agent
                 enemyGameObjectData.ValueRO.NavMeshAgent.Value.isStopped = false; 

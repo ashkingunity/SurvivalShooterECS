@@ -1,11 +1,11 @@
 ﻿using Ashking.Components;
+using Ashking.Groups;
 using Ashking.OOP;
 using Unity.Entities;
 
 namespace Ashking.Systems
 {
-    [UpdateInGroup(typeof(SimulationSystemGroup), OrderLast = true)]
-    [UpdateBefore(typeof(EndSimulationEntityCommandBufferSystem))]
+    [UpdateInGroup(typeof(EntityDestructionGroup))]
     public partial struct PlayerDestroySystem : ISystem
     {
         public void OnCreate(ref SystemState state)

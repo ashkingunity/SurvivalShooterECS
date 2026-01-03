@@ -1,6 +1,5 @@
 ﻿using Ashking.Components;
 using AshKing.OOP;
-using Unity.Burst;
 using Unity.Entities;
 using UnityEngine;
 
@@ -36,6 +35,12 @@ namespace Ashking.Systems
 
                 if (currentHealth.ValueRW.Value <= 0)
                 {
+                    if (SystemAPI.HasComponent<PlayAudioClipOnDestroy>(entity))
+                    {
+                        // To play player death audio
+                        SystemAPI.SetComponentEnabled<PlayAudioClipOnDestroy>(entity, true);
+                    }
+                    
                     // Enable DestroyEntityFlag
                     SystemAPI.SetComponentEnabled<DestroyEntityFlag>(entity, true);
                 }

@@ -1,11 +1,11 @@
 ﻿using Ashking.Components;
+using Ashking.Groups;
 using Ashking.OOP;
 using Unity.Entities;
 
 namespace Ashking.Systems
 {
-    [UpdateInGroup(typeof(SimulationSystemGroup), OrderLast = true)]
-    [UpdateBefore(typeof(EndSimulationEntityCommandBufferSystem))]
+    [UpdateInGroup(typeof(EntityDestructionGroup))]
     public partial struct EnemyDestroySystem : ISystem
     {
         public void OnCreate(ref SystemState state)
@@ -22,9 +22,7 @@ namespace Ashking.Systems
                      in SystemAPI.Query<RefRW<EnemyGameObjectData>, DestroyEntityFlag>().WithAll<EnemyTag>().WithEntityAccess())
             {
                 enemyGameObjectData.ValueRW.Animator.Value.SetTrigger(SurvivalShooterAnimationHashes.DieHash);
-
-                EnemyProvider.Instance.ReturnEnemy(enemyGameObjectData.ValueRW.Animator.Value.gameObject,
-                    enemyGameObjectData.ValueRW.EnemyName);
+                enemyGameObjectData.ValueRW.NavMeshAgent.Value.enabled = false;
                     
                 endEcb.DestroyEntity(entity);
             }

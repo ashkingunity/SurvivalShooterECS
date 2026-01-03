@@ -1,6 +1,5 @@
 ﻿using Ashking.Components;
 using Ashking.Groups;
-using Unity.Burst;
 using Unity.Entities;
 
 namespace Ashking.Systems

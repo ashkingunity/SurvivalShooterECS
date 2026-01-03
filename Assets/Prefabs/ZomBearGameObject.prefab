@@ -135,6 +135,8 @@ GameObject:
   - component: {fileID: 8317657434456478201}
   - component: {fileID: 2894399997416735693}
   - component: {fileID: -4630247022829559632}
+  - component: {fileID: 3212473120946924235}
+  - component: {fileID: 7639332243247184346}
   m_Layer: 0
   m_Name: ZomBearGameObject
   m_TagString: Untagged
@@ -312,6 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24315dd33075460b979f0f24a8905bd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyName: 0
   navMeshAgent: {fileID: 7506679963696608474}
   animator: {fileID: 3436043271151110491}
   audioSource: {fileID: 8317657434456478201}
@@ -329,6 +332,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolSize: 5
+--- !u!114 &3212473120946924235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5583253270221625255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3662937259e69f4da1fd2cd361c929c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7639332243247184346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5583253270221625255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a20e14527273584698f70476a7ca7f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sinkSpeed: 2.5
+  <OnSink>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3212473120946924235}
+        m_TargetAssemblyTypeName: Ashking.OOP.BackToPool, Assembly-CSharp
+        m_MethodName: ReturnToPool
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7065965706999790206
 GameObject:
   m_ObjectHideFlags: 0

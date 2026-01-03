@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8846110031685506089}
   - component: {fileID: 5877382458219055602}
   - component: {fileID: 6410625840994060823}
+  - component: {fileID: 6078587633814091311}
   m_Layer: 7
   m_Name: Hellephant
   m_TagString: Untagged
@@ -122,3 +123,16 @@ MonoBehaviour:
   maxHealth: 300
   attackDamage: 10
   coolDownTime: 0.5
+--- !u!114 &6078587633814091311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5380619715963944769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b16440c0197848ca855af99b20465fa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip: {fileID: 8300000, guid: 8c615fd0429f34edf85539d70279360d, type: 3}
