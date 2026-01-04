@@ -2,6 +2,7 @@
 using Ashking.OOP;
 using Unity.Entities;
 using Unity.Transforms;
+using UnityEngine;
 
 namespace Ashking.Systems
 {
@@ -16,9 +17,6 @@ namespace Ashking.Systems
         public void OnUpdate(ref SystemState state)
         {
             var playerEntity = SystemAPI.GetSingletonEntity<PlayerTag>();
-            if(playerEntity == Entity.Null)
-                return;
-            
             var playerPosition = SystemAPI.GetComponent<LocalTransform>(playerEntity).Position;
             
             foreach (var (enemyGameObjectData, localTransform) 

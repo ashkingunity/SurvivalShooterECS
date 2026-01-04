@@ -21,7 +21,7 @@ namespace Ashking.Systems
             foreach (var (playerGameObjectData, _, entity) in SystemAPI.Query<RefRW<PlayerGameObjectData>, DestroyEntityFlag>().WithAll<PlayerTag>().WithEntityAccess())
             {
                 playerGameObjectData.ValueRW.Animator.Value.SetTrigger(SurvivalShooterAnimationHashes.DieHash);
-                GameUIController.Instance.PauseGame(true);
+                GameUIController.Instance.OnPlayerDead();
                 
                 endEcb.DestroyEntity(entity);
             }

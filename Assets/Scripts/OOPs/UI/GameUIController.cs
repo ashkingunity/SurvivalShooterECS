@@ -1,4 +1,5 @@
-﻿using OOPs.Utlities;
+﻿using System;
+using OOPs.Utlities;
 using TMPro;
 using Unity.Entities;
 using UnityEngine;
@@ -6,10 +7,9 @@ using UnityEngine.UI;
 
 namespace Ashking.OOP
 {
+    [RequireComponent(typeof(ScoreManager))]
     public class GameUIController : Singleton<GameUIController>
     {
-        bool isGamePaused = false;
-        
         public Slider healthSlider;
         public Image damageImage;
         public TextMeshProUGUI scoreText;
@@ -17,9 +17,11 @@ namespace Ashking.OOP
         public float flashSpeed = 5f;
         public Color flashColor = new Color(1f, 0f, 0f, 0.1f);
 
-        private bool damaged;
+        bool damaged;
+        
+        public event Action OnPlayerDeadEvent; 
 
-        void OnEnable()
+        void Start()
         {
             ScoreManager.Instance.OnScoreUpdated += UpdateScore;
         }
@@ -42,14 +44,19 @@ namespace Ashking.OOP
             damaged = true;
         }
 
+        public void OnPlayerDead()
+        {
+            OnPlayerDeadEvent?.Invoke();
+            PauseGame(true);
+        }
+
         void UpdateScore(int score)
         {
             scoreText.text = $"SCORE: {score}";
         }
 
-        public void PauseGame(bool pause)
+        void PauseGame(bool pause)
         {
-            isGamePaused = pause;
             SetEcsEnabled(!pause);
         }
         

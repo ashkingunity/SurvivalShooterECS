@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace Ashking.OOP
@@ -10,10 +11,27 @@ namespace Ashking.OOP
         public Animator animator;
         public AudioSource audioSource;
         public ParticleSystem hitParticles;
+
+        void OnEnable()
+        {
+            GameUIController.Instance.OnPlayerDeadEvent += DisableMovement;
+        }
+
+        void OnDisable()
+        {
+            GameUIController.Instance.OnPlayerDeadEvent -= DisableMovement;
+        }
+
+        void DisableMovement()
+        {
+            navMeshAgent.enabled = false;
+            animator.SetBool(SurvivalShooterAnimationHashes.WalkingHash, false);
+        }
         
         public void ConfigureEnemyGameObject()
         {
             navMeshAgent.enabled = true;
         }
+        
     }
 }
