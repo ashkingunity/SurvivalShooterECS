@@ -123,6 +123,7 @@ MonoBehaviour:
   maxHealth: 100
   attackDamage: 10
   coolDownTime: 0.5
+  scoreValue: 10
 --- !u!114 &6157543435291431943
 MonoBehaviour:
   m_ObjectHideFlags: 0

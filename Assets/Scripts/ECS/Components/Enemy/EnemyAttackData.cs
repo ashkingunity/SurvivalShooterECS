@@ -4,7 +4,7 @@ namespace Ashking.Components
 {
     public struct EnemyAttackData : IComponentData
     {
-        public float Damage;
+        public int Damage;
         public float CooldownTime;// timeBetweenAttacks
     }
 }

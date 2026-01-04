@@ -1,4 +1,5 @@
 ﻿using Ashking.Components;
+using Ashking.OOP;
 using AshKing.OOP;
 using Unity.Entities;
 using UnityEngine;
@@ -17,20 +18,24 @@ namespace Ashking.Systems
                 if(damageThisFrame.IsEmpty)
                     continue;
 
-                var previousHealth = currentHealth.ValueRO.Value;
-                // update currentHealth for each damage/hits taken this frame
+                var hitPointsThisFrame = 0;
+                // add accumulated damage/hits taken this frame
                 foreach (var damage in damageThisFrame)
                 {
-                    currentHealth.ValueRW.Value -= damage.Value;
+                    hitPointsThisFrame += damage.Value;
                 }
+
+                // reduce accumulated damage/hits from currentHealth
+                currentHealth.ValueRW.Value -= hitPointsThisFrame;
                 
                 // clear damageThisFrame buffer after process the damages/hits
                 damageThisFrame.Clear();
                 
                 // Play player hurt audio only if player damaged
-                if (!Mathf.Approximately(previousHealth, currentHealth.ValueRO.Value))
+                if (hitPointsThisFrame > 0)
                 {
                     PlayerGameObject.Instance.playerAudioSource.Play();
+                    GameUIController.Instance.OnPlayerTookDamage(currentHealth.ValueRO.Value);
                 }
 
                 if (currentHealth.ValueRW.Value <= 0)

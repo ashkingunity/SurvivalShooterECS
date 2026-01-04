@@ -120,9 +120,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyName: 1
-  maxHealth: 100
+  maxHealth: 150
   attackDamage: 10
   coolDownTime: 0.5
+  scoreValue: 20
 --- !u!114 &7754879892766303435
 MonoBehaviour:
   m_ObjectHideFlags: 0

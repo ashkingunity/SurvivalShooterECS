@@ -10,8 +10,11 @@ namespace Ashking.Authoring
         [SerializeField] EnemyName enemyName;
         
         [SerializeField] float maxHealth = 100f;
-        [SerializeField] float attackDamage = 5f;
+        [SerializeField] int attackDamage = 5;
         [SerializeField] float coolDownTime = 0.5f;
+        
+        [Space]
+        public int scoreValue = 10;
             
         private class EnemyAuthoringBaker : Baker<EnemyAuthoring>
         {
@@ -42,6 +45,11 @@ namespace Ashking.Authoring
                 
                 AddComponent<DestroyEntityFlag>(entity);
                 SetComponentEnabled<DestroyEntityFlag>(entity, false);
+                
+                AddComponent(entity, new Score
+                {
+                    Value = authoring.scoreValue
+                });
             }
         }
     }
