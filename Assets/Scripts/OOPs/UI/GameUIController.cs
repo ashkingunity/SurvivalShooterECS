@@ -19,16 +19,16 @@ namespace Ashking.OOP
 
         bool damaged;
         
-        public event Action OnPlayerDeadEvent; 
+        public event Action PlayerDeadEvent; 
 
         void Start()
         {
-            ScoreManager.Instance.OnScoreUpdated += UpdateScore;
+            ScoreManager.Instance.ScoreUpdatedEvent += OnScoreUpdated;
         }
 
         void OnDisable()
         {
-            ScoreManager.Instance.OnScoreUpdated -= UpdateScore;
+            ScoreManager.Instance.ScoreUpdatedEvent -= OnScoreUpdated;
         }
 
         void Update()
@@ -46,11 +46,11 @@ namespace Ashking.OOP
 
         public void OnPlayerDead()
         {
-            OnPlayerDeadEvent?.Invoke();
+            PlayerDeadEvent?.Invoke();
             PauseGame(true);
         }
 
-        void UpdateScore(int score)
+        void OnScoreUpdated(int score)
         {
             scoreText.text = $"SCORE: {score}";
         }

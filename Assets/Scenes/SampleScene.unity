@@ -1027,7 +1027,7 @@ GameObject:
   - component: {fileID: 879454909}
   - component: {fileID: 879454908}
   m_Layer: 5
-  m_Name: DmageImage
+  m_Name: DamageImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

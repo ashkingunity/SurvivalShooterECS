@@ -14,12 +14,12 @@ namespace Ashking.OOP
 
         void OnEnable()
         {
-            GameUIController.Instance.OnPlayerDeadEvent += DisableMovement;
+            GameUIController.Instance.PlayerDeadEvent += DisableMovement;
         }
 
         void OnDisable()
         {
-            GameUIController.Instance.OnPlayerDeadEvent -= DisableMovement;
+            GameUIController.Instance.PlayerDeadEvent -= DisableMovement;
         }
 
         void DisableMovement()

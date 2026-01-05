@@ -7,12 +7,12 @@ namespace Ashking.OOP
     {
         public int score;
 
-        public event Action<int> OnScoreUpdated;
+        public event Action<int> ScoreUpdatedEvent;
 
         public void AddScore(int value)
         {
             score += value;
-            OnScoreUpdated?.Invoke(score);
+            ScoreUpdatedEvent?.Invoke(score);
         }
     }
 }
