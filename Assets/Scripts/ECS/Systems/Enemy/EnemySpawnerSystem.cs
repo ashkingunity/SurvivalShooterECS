@@ -1,4 +1,5 @@
 ﻿using Ashking.Components;
+using Unity.Burst;
 using Unity.Entities;
 using Unity.Transforms;
 
@@ -11,6 +12,7 @@ namespace Ashking.Systems
             state.RequireForUpdate<BeginInitializationEntityCommandBufferSystem.Singleton>();
         }
         
+        [BurstCompile]
         public void OnUpdate(ref SystemState state)
         {
             var deltaTime = SystemAPI.Time.DeltaTime;
@@ -27,7 +29,7 @@ namespace Ashking.Systems
                 enemyNextSpawnTime.ValueRW.Value = enemySpawnData.SpawnInterval;
                 
                 var newEnemy = ecb.Instantiate(enemySpawnData.EnemyPrefab);// Instantiate enemy entity
-                ecb.SetComponent(newEnemy, LocalTransform.FromPosition(enemySpawnData.SpawnPoint.Value.position));// Set its spawn position
+                ecb.SetComponent(newEnemy, LocalTransform.FromPosition(enemySpawnData.SpawnPoint));// Set its spawn position
             }
         }
     }

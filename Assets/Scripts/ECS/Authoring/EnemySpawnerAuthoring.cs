@@ -19,7 +19,7 @@ namespace Ashking.Authoring
                 {
                     EnemyPrefab = GetEntity(authoring.enemyPrefab, TransformUsageFlags.Dynamic),
                     SpawnInterval = authoring.spawnInterval,
-                    SpawnPoint = authoring.spawnPoint
+                    SpawnPoint = authoring.spawnPoint.position
                 });
                 AddComponent<EnemySpawnTimer>(entity);
             }

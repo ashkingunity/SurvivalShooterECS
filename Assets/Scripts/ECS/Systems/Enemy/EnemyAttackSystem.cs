@@ -17,6 +17,7 @@ namespace Ashking.Systems
             state.RequireForUpdate<SimulationSingleton>();
         }
         
+        [BurstCompile]
         public void OnUpdate(ref SystemState state)
         {
             var elapsedTime = SystemAPI.Time.ElapsedTime;
