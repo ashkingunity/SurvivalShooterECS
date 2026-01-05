@@ -9,6 +9,10 @@ This repository demonstrates practical implementation of DOTS‑driven
 gameplay patterns including movement, physics interactions, enemy
 spawning, damage systems, UI sync, and hybrid workflows for animation &
 audio.
+------------------------------------------------------------------------
+
+[![Game Video](https://img.youtube.com/vi/sqiy2lf-Kjs/maxresdefault.jpg)](https://youtu.be/sqiy2lf-Kjs)
+### [ Survival Shooter using Unity DOTS ](https://youtu.be/sqiy2lf-Kjs)
 
 ------------------------------------------------------------------------
 
