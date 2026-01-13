@@ -18,17 +18,18 @@ audio.
 
 ## 📌 Project Overview
 
-| Category       | Tools / Framework                                 |
-| -------------- | ------------------------------------------------- |
-|  Engine        | **Unity 6.3 lts (6000.0.64f1) (DOTS compatible)** |                   
-|  Architecture  | **Entity Component System (ECS)**                 |        
-|  Performance   | **Burst Compiler + C# Job System**                |
-|  Rendering     | Unity Graphics (Entities Graphics)                |
-|  Physics       | Unity Physics (ECS)                               |
-|  Input         | New Input System                                  |
+| Category          | Tools / Framework                                 |
+| ----------------- | ------------------------------------------------- |
+|  Engine           | **Unity 6.3 lts (6000.0.64f1) (DOTS compatible)** |                   
+|  Architecture     | **Entity Component System (ECS)**                 |        
+|  Performance      | **Burst Compiler + C# Job System**                |
+|  Rendering        | **Unity Graphics (Entities Graphics)**            |
+|  Physics          | **Unity Physics (ECS)**                           |
+|  Input            | **New Input System**                              |
+|  Render pipeline  | **Universal Render Pipeline (URP)**               |
 
 > If you are opening this project, please use a **DOTS‑compatible Unity 6.3
-> LTS version 6000.0.64f1 or above**.
+> LTS version 6000.3.3f1 or above**.
 
 ------------------------------------------------------------------------
 
@@ -36,9 +37,9 @@ audio.
 
 This project was built using the following Unity DOTS packages:
 
--   Entities `v1.4.3`
--   Entities Graphics `v1.4.16`
--   Unity Physics `v1.4.3`
+-   Entities `v1.4.4`
+-   Entities Graphics `v1.4.17`
+-   Unity Physics `v1.4.4`
 
 The packages automatically installed as dependencies are:
 
